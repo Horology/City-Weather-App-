@@ -1,0 +1,39 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\.."
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "FirstMySQLConnection",
+				"database": "student",
+				"username": "root",
+				"password": "mysqlpassword"
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"type": "pwa-node",
+				"request": "launch",
+				"name": "Launch Program",
+				"skipFiles": [
+					"<node_internals>/**"
+				],
+				"program": "c:\\Users\\houch\\Desktop\\Javascript.js",
+				"__workspaceFolder": "c:\\Users\\houch\\Desktop"
+			}
+		]
+	}
+}
