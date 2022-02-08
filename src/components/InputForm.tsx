@@ -2,10 +2,16 @@ import React, {useState, useEffect} from 'react';
 import {useGlobalContext} from '../context/context'
 
 
-const InputForm = () => {
+const InputForm = ():JSX.Element => {
     const {fetchCityPhotos, fetchWeather, cityWeather, cityPhoto} = useGlobalContext();
-    const [city, setCity] = useState(''); 
+    const [city, setCity] = useState<string>(''); 
+    const [helperText, setHelperText] = useState<string>('Please enter City above');
 
+    useEffect(()=>{
+        if(cityWeather == 'NONE'){
+            setHelperText('City does not exist. Please try again.')
+        }
+    }, [cityWeather])
     
     const handleCity = (e: any) => {
         e.preventDefault();
@@ -30,10 +36,8 @@ const InputForm = () => {
                 </div>
             </div>
             <div className="text-red-400 text-right">
-                {(cityWeather == 'NONE')? 'City does not exist':null}
+                {helperText && helperText}
             </div>
-            {/* <h2 className="text-left text-md font-bold text-gray-500">
-                See Current Suggestions: {suggestions}</h2> */}
             </div>
             <button 
             onClick = {(e: any) => {e.preventDefault(); fetchWeather(city);fetchCityPhotos(city)}}

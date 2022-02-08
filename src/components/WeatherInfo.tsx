@@ -9,7 +9,8 @@ const WeatherInfo = () => {
     }, [cityWeather]);
 
     const handleDisplay = () => {
-        if(cityWeather == 'NONE'){
+        if(cityWeather == '' || cityWeather == 'NONE'){
+            console.log('false')
             return false;
         }
         return true;
@@ -33,18 +34,18 @@ const WeatherInfo = () => {
             <div className=" h-full p-2 flex items-center justify-center text-blue-800 text-lg
             bg-no-repeat bg-cover rounded-lg mb-2 text-base md:text-lg" 
             style={{ backgroundImage: `url(${cityPhoto.urls.raw})`}} >
-                <div>
-                    <h1><span className = 'font-bold'>Weather Info:</span> {cityWeather.name} </h1>
-                    <div><span className = 'font-bold'>Temperature:</span> {cityWeather.main.temp} °F</div>
-                    <div><span className = 'font-bold'>Max Temperature:</span> {cityWeather.main.temp_max} °F</div>
-                    <div><span className = 'font-bold'>Min Temperature:</span> {cityWeather.main.temp_min} °F</div>
-                    <div><span className = 'font-bold'>Feels Like:</span> {cityWeather.main.feels_like} °F</div>
-                    <div><span className = 'font-bold '>Lots of {cityWeather.weather[0].main}</span> </div>
+                { cityWeather.name && <div>
+                    <h1><span className = 'font-bold'>Weather Info:</span> {cityWeather.name && cityWeather.name} </h1>
+                    <div><span className = 'font-bold'>Temperature:</span> {cityWeather.main.temp && cityWeather.main.temp} °F</div>
+                    <div><span className = 'font-bold'>Max Temperature:</span> {cityWeather.main.temp_max && cityWeather.main.temp_max } °F</div>
+                    <div><span className = 'font-bold'>Min Temperature:</span> {cityWeather.main.temp_min && cityWeather.main.temp_min } °F</div>
+                    <div><span className = 'font-bold'>Feels Like:</span> {cityWeather.main.feels_like && cityWeather.main.feels_like} °F</div>
+                    <div><span className = 'font-bold '>Lots of {cityWeather.weather[0].main && cityWeather.weather[0].main}</span> </div>
                     <br/>
                     <div className="text-xs">
                         Photo by <a href={cityPhoto.user.portfolio_url}>{cityPhoto.user.name}</a> on <a href={cityPhoto.user.links.self}>Unsplash</a>
                     </div>
-                </div>
+                </div>}
                 
             </div>}
         </div>
