@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';  
+import {useState, useEffect} from 'react';  
 import {useGlobalContext} from '../context/context'
 
 
 const InputForm = ():JSX.Element => {
-    const {fetchCityPhotos, fetchWeather, cityWeather, cityPhoto} = useGlobalContext();
+    const {fetchCityPhotos, fetchWeather, cityWeather} = useGlobalContext();
     const [city, setCity] = useState<string>(''); 
     const [helperText, setHelperText] = useState<string>('Please enter City above');
 
@@ -15,12 +15,17 @@ const InputForm = ():JSX.Element => {
     
     const handleCity = (e: any) => {
         e.preventDefault();
+        if( isNaN( +e.target.value) == false){
+            setCity('');
+            return
+        }
         setCity(e.target.value);
     }
 
     
     return (
         <form className = "h-80 bg-slate-800 rounded-md p-4 pt-16">
+            
             <h1 className="text-center text-xl font-bold text-stone-200 uppercase">
                 Check the current Weather</h1>
             <div className="space-y-4 mt-6">
